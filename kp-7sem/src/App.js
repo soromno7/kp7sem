@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import LoginPage from "./pages/login/LoginPage";
+// import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
+
+// const { palette } = createTheme();
+// const { augmentColor } = palette;
+// const createColor = (mainColor) => augmentColor({ color: { main: mainColor } });
+// const theme = createTheme({
+//   palette: {
+//     button: createColor('#F40B27'),
+//     input: createColor('#5DBA40'),
+//   },
+// });
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    {/* <MuiThemeProvider theme={theme}> */}
+    {/* </MuiThemeProvider> */}
+    <LoginPage />
     </div>
   );
 }
