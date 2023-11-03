@@ -1,23 +1,16 @@
 import LoginPage from "./pages/login/LoginPage";
-// import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
-
-// const { palette } = createTheme();
-// const { augmentColor } = palette;
-// const createColor = (mainColor) => augmentColor({ color: { main: mainColor } });
-// const theme = createTheme({
-//   palette: {
-//     button: createColor('#F40B27'),
-//     input: createColor('#5DBA40'),
-//   },
-// });
+import RegisterPage from "./pages/register/RegisterPage";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-    {/* <MuiThemeProvider theme={theme}> */}
-    {/* </MuiThemeProvider> */}
-    <LoginPage />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
