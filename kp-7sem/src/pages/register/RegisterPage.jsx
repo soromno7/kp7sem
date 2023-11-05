@@ -7,12 +7,44 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 function RegisterPage() {
+  const [name, setName] = useState();
+  const [secondName, setSecondName] = useState();
   const [date, setDate] = useState({});
-  useEffect(() => {
-    console.log(date);
-  });
+  const [phone, setPhone] = useState();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [confirmPassword, setConfirmPassword] = useState();
+
+  const sessionHandler = (data) => {
+    sessionStorage.user = JSON.stringify(data)
+  }
+
+  const btnHandler = async () => {
+    const user = {
+      email: email,
+      password: password,
+      phone: phone,
+      date_of_birth: date,
+      first_name: name,
+      last_name: secondName,
+      role: "user",
+      status: "ok",
+    };
+
+    await axios
+      .post("http://localhost:8080/registration", user)
+      .then((res) => {
+        console.log(res);
+      })
+      .then(() => sessionHandler(user))
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <div className="loginPageContainer">
@@ -24,6 +56,9 @@ function RegisterPage() {
               label="Имя"
               variant="filled"
               style={{ backgroundColor: "white", borderRadius: "4px" }}
+              onChange={(val) => {
+                setName(val.target.value);
+              }}
               sx={{
                 width: 165,
               }}
@@ -34,13 +69,16 @@ function RegisterPage() {
               label="Фамилия"
               variant="filled"
               style={{ backgroundColor: "white", borderRadius: "4px" }}
+              onChange={(val) => {
+                setSecondName(val.target.value);
+              }}
               sx={{
                 width: 165,
               }}
               InputProps={{ sx: { height: 52 } }}
             />
           </div>
-          <div style={{ background: "white", borderRadius: "4px" }}>
+          <div style={{ backgroundColor: "#ebebeb", borderRadius: "4px" }}>
             <DatePicker
               label="Дата рождения"
               onChange={(val) => {
@@ -59,6 +97,9 @@ function RegisterPage() {
             label="Номер телефона"
             variant="filled"
             style={{ backgroundColor: "white", borderRadius: "4px" }}
+            onChange={(val) => {
+              setPhone(val.target.value);
+            }}
             sx={{
               width: 350,
             }}
@@ -69,6 +110,9 @@ function RegisterPage() {
             label="Почта"
             variant="filled"
             style={{ backgroundColor: "white", borderRadius: "4px" }}
+            onChange={(val) => {
+              setEmail(val.target.value);
+            }}
             sx={{
               width: 350,
             }}
@@ -79,6 +123,9 @@ function RegisterPage() {
             label="Пароль"
             variant="filled"
             style={{ backgroundColor: "white", borderRadius: "4px" }}
+            onChange={(val) => {
+              setPassword(val.target.value);
+            }}
             sx={{
               width: 350,
             }}
@@ -89,6 +136,9 @@ function RegisterPage() {
             label="Подтвердите пароль"
             variant="filled"
             style={{ backgroundColor: "white", borderRadius: "4px" }}
+            onChange={(val) => {
+              setConfirmPassword(val.target.value);
+            }}
             sx={{
               width: 350,
             }}
@@ -97,11 +147,14 @@ function RegisterPage() {
           <Button
             variant="contained"
             style={{ backgroundColor: "white", color: "black" }}
+            onClick={btnHandler}
           >
             Войти
           </Button>
           <span>Уже есть аккаунт?</span>
-          <Link to={'/login'} style={{textDecoration: 'none'}}>Войти</Link>
+          <Link to={"/login"} style={{ textDecoration: "none" }}>
+            Войти
+          </Link>
         </div>
         <img src={registerPic} alt="login pic" style={{ width: "400px" }} />
       </div>
