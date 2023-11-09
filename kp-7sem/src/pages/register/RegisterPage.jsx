@@ -6,7 +6,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function RegisterPage() {
@@ -18,9 +18,12 @@ function RegisterPage() {
   const [password, setPassword] = useState();
   const [confirmPassword, setConfirmPassword] = useState();
 
+  const navigate = useNavigate();
+
   const sessionHandler = (data) => {
-    sessionStorage.user = JSON.stringify(data)
-  }
+    console.log(data);
+    sessionStorage.user = JSON.stringify(data);
+  };
 
   const btnHandler = async () => {
     const user = {
@@ -40,6 +43,9 @@ function RegisterPage() {
         console.log(res);
       })
       .then(() => sessionHandler(user))
+      .then(() => {
+        navigate("/main");
+      })
       .catch((err) => {
         console.log(err);
       });
@@ -149,7 +155,7 @@ function RegisterPage() {
             style={{ backgroundColor: "white", color: "black" }}
             onClick={btnHandler}
           >
-            Войти
+            Зарегистрироваться
           </Button>
           <span>Уже есть аккаунт?</span>
           <Link to={"/login"} style={{ textDecoration: "none" }}>

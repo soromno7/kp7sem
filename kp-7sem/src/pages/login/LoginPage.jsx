@@ -2,7 +2,7 @@ import "./log.css";
 import loginPic from "./login.svg";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
@@ -10,9 +10,11 @@ function LoginPage() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
+  const navigate = useNavigate();
+
   const sessionHandler = (data) => {
-    sessionStorage.user = JSON.stringify(data)
-  }
+    sessionStorage.user = JSON.stringify(data);
+  };
 
   const btnHandler = async () => {
     const user = {
@@ -20,14 +22,18 @@ function LoginPage() {
       password: password,
     };
 
-    await axios.post("http://localhost:8080/login", user)
-    .then((res) => {
-      console.log(res)
-    })
-    .then(() => sessionHandler(user))
-    .catch((err) => {
-      console.log(err)
-    })
+    await axios
+      .post("http://localhost:8080/login", user)
+      .then((res) => {
+        console.log(res.data);
+        sessionHandler(res.data);
+      })
+      .then(() => {
+        navigate("/main");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (
