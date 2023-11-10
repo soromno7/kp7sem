@@ -7,11 +7,6 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import UnknownPage from "./pages/unknown/UnknownPage";
 
 function App() {
-  let isAuth = !!sessionStorage.user;
-
-  useEffect(() => {
-      console.log(isAuth)
-  }, [sessionStorage.user])
   return (
     <BrowserRouter>
       <Routes>
