@@ -1,4 +1,4 @@
-export const routes = [
+export const AdminRoutes = [
   {
     path: "/",
     name: "Главная страница",
@@ -35,4 +35,27 @@ export const routes = [
     path: "/",
     name: "Отчёты",
   },
+];
+
+export const UserRoutes = [
+  {
+    path: "/",
+    name: "Главная страница",
+  },
+  {
+    path: "/",
+    name: "Аренда",
+  },
+  {
+    path: "/",
+    name: "Мои заказы",
+  },
+  {
+    path: "/",
+    name: "Мой автомобиль",
+  },
+  {
+    path: "profile",
+    name: "Профиль",
+  }
 ];

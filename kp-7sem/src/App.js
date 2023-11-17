@@ -5,6 +5,7 @@ import RegisterPage from "./pages/register/RegisterPage";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import UnknownPage from "./pages/unknown/UnknownPage";
+import ProfilePage from "./pages/profile/ProfilePage";
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
               <MainPage />
             </PrivateRoute>
           }
-        ></Route>
+        >
+          <Route path="profile" element={<ProfilePage />} />
+        </Route>
         <Route path="*" element={<UnknownPage />} />
       </Routes>
     </BrowserRouter>
