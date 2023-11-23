@@ -1,10 +1,6 @@
 export const AdminRoutes = [
   {
     path: "/",
-    name: "Главная страница",
-  },
-  {
-    path: "/",
     name: "Пользователи",
   },
   {
@@ -35,6 +31,10 @@ export const AdminRoutes = [
     path: "/",
     name: "Отчёты",
   },
+  {
+    path: "/",
+    name: "Выйти",
+  }
 ];
 
 export const UserRoutes = [
@@ -57,5 +57,9 @@ export const UserRoutes = [
   {
     path: "profile",
     name: "Профиль",
+  },
+  {
+    path: "/",
+    name: "Выйти",
   }
 ];
