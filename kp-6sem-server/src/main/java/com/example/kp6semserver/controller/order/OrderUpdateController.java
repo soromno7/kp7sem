@@ -18,7 +18,8 @@ public class OrderUpdateController {
 
     @PutMapping("/{id}")
     OrderEntity updateOrder(@RequestBody OrderEntity order, @PathVariable Long id) throws ObjDoesNotExist {
-        return orderService.update(order);
+//        return orderService.update(order);
+        return null;
     }
 
 }

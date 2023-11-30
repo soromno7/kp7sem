@@ -1,7 +1,6 @@
 package com.example.kp6semserver.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 
 @Entity
 @Table(name = "Orders")
@@ -19,13 +18,8 @@ public class OrderEntity {
     @JoinColumn(name = "user_id")
     private UserEntity user;
 
-    @ManyToOne
-    @JoinColumn(name = "car_id")
-    private CarEntity car;
-
-    @ManyToOne
-    @JoinColumn(name = "order_id")
-    private RentalEntity rental;
+    @OneToOne(mappedBy = "order")
+    private DealerEntity dealer;
 
     public OrderEntity() {
     }
@@ -76,14 +70,6 @@ public class OrderEntity {
 
     public void setUser(UserEntity user) {
         this.user = user;
-    }
-
-    public CarEntity getCar() {
-        return car;
-    }
-
-    public void setCar(CarEntity car) {
-        this.car = car;
     }
 
     public String getPromocode() { return promocode; }

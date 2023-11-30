@@ -20,44 +20,44 @@ public class OrderModel {
 
     // List<OrderModel>
 
-    public static OrderModel toModelOne(OrderEntity entity) {
-        OrderModel model = new OrderModel();
-        model.setId(entity.getId());
-        model.setCarBrand(entity.getCar().getBrand());
-        model.setCarName(entity.getCar().getName());
-        model.setOrderDate(entity.getOrderDate());
-        model.setOrderTime(entity.getOrderTime());
-        model.setClientName(entity.getUser().getFirst_name());
-        model.setClientLastName(entity.getUser().getLast_name());
-        model.setDriveLength(entity.getDriveLength());
-        model.setDrivePrice(entity.getDrivePrice());
-        model.setPlateNumber(entity.getCar().getPlateNumber());
-        model.setTariff(entity.getCar().getTariff());
-
-        return model;
-    }
-    public static ArrayList<OrderModel> toModel(List<OrderEntity> list) {
-        ArrayList<OrderModel> resList = new ArrayList<OrderModel>();
-
-        for(OrderEntity entity : list) {
-            OrderModel model = new OrderModel();
-            model.setId(entity.getId());
-            model.setCarBrand(entity.getCar().getBrand());
-            model.setCarName(entity.getCar().getName());
-            model.setOrderDate(entity.getOrderDate());
-            model.setOrderTime(entity.getOrderTime());
-            model.setClientName(entity.getUser().getFirst_name());
-            model.setClientLastName(entity.getUser().getLast_name());
-            model.setDriveLength(entity.getDriveLength());
-            model.setDrivePrice(entity.getDrivePrice());
-            model.setPlateNumber(entity.getCar().getPlateNumber());
-            model.setTariff(entity.getCar().getTariff());
-
-            resList.add(model);
-        }
-
-        return resList;
-    }
+//    public static OrderModel toModelOne(OrderEntity entity) {
+//        OrderModel model = new OrderModel();
+//        model.setId(entity.getId());
+//        model.setCarBrand(entity.getCar().getBrand());
+//        model.setCarName(entity.getCar().getName());
+//        model.setOrderDate(entity.getOrderDate());
+//        model.setOrderTime(entity.getOrderTime());
+//        model.setClientName(entity.getUser().getFirst_name());
+//        model.setClientLastName(entity.getUser().getLast_name());
+//        model.setDriveLength(entity.getDriveLength());
+//        model.setDrivePrice(entity.getDrivePrice());
+//        model.setPlateNumber(entity.getCar().getPlateNumber());
+//        model.setTariff(entity.getCar().getTariff());
+//
+//        return model;
+//    }
+//    public static ArrayList<OrderModel> toModel(List<OrderEntity> list) {
+//        ArrayList<OrderModel> resList = new ArrayList<OrderModel>();
+//
+//        for(OrderEntity entity : list) {
+//            OrderModel model = new OrderModel();
+//            model.setId(entity.getId());
+//            model.setCarBrand(entity.getCar().getBrand());
+//            model.setCarName(entity.getCar().getName());
+//            model.setOrderDate(entity.getOrderDate());
+//            model.setOrderTime(entity.getOrderTime());
+//            model.setClientName(entity.getUser().getFirst_name());
+//            model.setClientLastName(entity.getUser().getLast_name());
+//            model.setDriveLength(entity.getDriveLength());
+//            model.setDrivePrice(entity.getDrivePrice());
+//            model.setPlateNumber(entity.getCar().getPlateNumber());
+//            model.setTariff(entity.getCar().getTariff());
+//
+//            resList.add(model);
+//        }
+//
+//        return resList;
+//    }
 
     public OrderModel() {
     }

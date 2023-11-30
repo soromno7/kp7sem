@@ -17,7 +17,8 @@ public class CarUpdateController {
 
     @PutMapping("/{id}")
     CarEntity updateCar(@RequestBody CarEntity car, @PathVariable Long id) throws ObjDoesNotExist {
-        return carService.update(car);
+//        return carService.update(car);
+        return null;
     }
 
 }

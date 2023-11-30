@@ -17,7 +17,8 @@ public class CarGetLocationController {
 
     @GetMapping("/{id}")
     public Double[] getCar (@PathVariable Long id) {
-        return carService.getLocation(id);
+//        return carService.getLocation(id);
+        return null;
     }
 
 }

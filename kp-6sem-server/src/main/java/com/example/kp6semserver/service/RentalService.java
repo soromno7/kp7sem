@@ -1,7 +1,7 @@
 package com.example.kp6semserver.service;
 
 import com.example.kp6semserver.entity.OrderEntity;
-import com.example.kp6semserver.entity.RentalEntity;
+import com.example.kp6semserver.entity.RecordEntity;
 import com.example.kp6semserver.model.RentalModel;
 import com.example.kp6semserver.repository.OrderRepo;
 import com.example.kp6semserver.repository.RentalRepo;
@@ -22,8 +22,8 @@ public class RentalService {
     @Autowired
     private OrderRepo orderRepo;
 
-    public RentalEntity create() {
-        RentalEntity rental = new RentalEntity();
+    public RecordEntity create() {
+        RecordEntity rental = new RecordEntity();
         List<OrderEntity> orders = orderRepo.findAll();
         String orderQuantity = String.valueOf(orders.size());
         String orderSum = orderSum(orders);

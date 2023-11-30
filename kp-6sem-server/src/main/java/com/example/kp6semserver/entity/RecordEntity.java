@@ -1,13 +1,12 @@
 package com.example.kp6semserver.entity;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 
 import java.util.List;
 
 @Entity
-@Table(name = "Rental")
-public class RentalEntity {
+@Table(name = "Record")
+public class RecordEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,10 +18,11 @@ public class RentalEntity {
 
     private String lastOrderTime;
 
-    @OneToMany(mappedBy = "rental")
-    private List<OrderEntity> orders_rental;
+    @ManyToOne
+    @JoinColumn(name = "record_id")
+    private RecordEntity record;
 
-    public RentalEntity() {
+    public RecordEntity() {
     }
 
     public Long getId() {

@@ -18,6 +18,9 @@ public class OrderGetAllController {
     private OrderService orderService;
 
     @GetMapping
-    public ArrayList<OrderModel> getAllOrders () {return orderService.getAllOrders();}
+    public ArrayList<OrderModel> getAllOrders () {
+//        return orderService.getAllOrders();
+        return null;
+    }
 
 }

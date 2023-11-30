@@ -19,14 +19,10 @@ public class CarEntity {
     private String engineCapacity;
     private String stereo;
     private String plateNumber;
-    private String tariff;
-    private Double[] location;
+    private String price;
 
-    @OneToMany(mappedBy = "car")
-    private List<OrderEntity> orders_car;
-
-    @OneToMany(mappedBy = "carItem")
-    private List<ReportEntity> reports_car;
+//    @OneToMany(mappedBy = "car")
+//    private List<OrderEntity> orders_car;
 
     public CarEntity() {
     }
@@ -103,19 +99,4 @@ public class CarEntity {
         this.plateNumber = plateNumber;
     }
 
-    public String getTariff() {
-        return tariff;
-    }
-
-    public void setTariff(String tariff) {
-        this.tariff = tariff;
-    }
-
-    public Double[] getLocation() {
-        return location;
-    }
-
-    public void setLocation(Double[] location) {
-        this.location = location;
-    }
 }

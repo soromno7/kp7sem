@@ -35,7 +35,6 @@ public class OrderService {
         String strDate = formatDate.format(date);
         String strTime = formatTime.format(date);
 
-        String tariff = car.getTariff();
         String[] driveLengthDelimited = order.getDriveLength().split(":");
 
         OrderService orderService = new OrderService();
@@ -43,13 +42,13 @@ public class OrderService {
         Boolean flag = false;
         if(promocode.equals(order.getPromocode())) flag = true;
 
-        String drivePrice = calculatePrice(driveLengthDelimited, tariff, flag);
+//        String drivePrice = calculatePrice(driveLengthDelimited, tariff, flag);
 
         order.setUser(user);
-        order.setCar(car);
+//        order.setCar(car);
         order.setOrderDate(strDate);
         order.setOrderTime(strTime);
-        order.setDrivePrice(drivePrice);
+//        order.setDrivePrice(drivePrice);
 
         return orderRepo.save(order);
     }
@@ -102,22 +101,22 @@ public class OrderService {
         return String.valueOf(time * coef + startPrice);
     }
 
-    public ArrayList<OrderModel> getAllOrders() { return OrderModel.toModel(orderRepo.findAll());}
+//    public ArrayList<OrderModel> getAllOrders() { return OrderModel.toModel(orderRepo.findAll());}
 
     public void deleteOrder(Long id) { orderRepo.deleteById(id);}
 
-    public OrderEntity update(OrderEntity entity) throws ObjDoesNotExist {
-        return orderRepo.findById(entity.getId())
-                .map(newOrder -> {
-                    newOrder.setOrderDate(entity.getOrderDate());
-                    newOrder.setOrderTime(entity.getOrderTime());
-                    newOrder.setDrivePrice(entity.getDrivePrice());
-                    newOrder.setDriveLength(entity.getDriveLength());
-                    newOrder.setCar(entity.getCar());
-                    newOrder.setUser(entity.getUser());
-                    newOrder.setId(entity.getId());
-                    return orderRepo.save(entity);
-                }).orElseThrow(() -> new ObjDoesNotExist("Заказа не существует"));
-    }
+//    public OrderEntity update(OrderEntity entity) throws ObjDoesNotExist {
+//        return orderRepo.findById(entity.getId())
+//                .map(newOrder -> {
+//                    newOrder.setOrderDate(entity.getOrderDate());
+//                    newOrder.setOrderTime(entity.getOrderTime());
+//                    newOrder.setDrivePrice(entity.getDrivePrice());
+//                    newOrder.setDriveLength(entity.getDriveLength());
+//                    newOrder.setCar(entity.getCar());
+//                    newOrder.setUser(entity.getUser());
+//                    newOrder.setId(entity.getId());
+//                    return orderRepo.save(entity);
+//                }).orElseThrow(() -> new ObjDoesNotExist("Заказа не существует"));
+//    }
 
 }

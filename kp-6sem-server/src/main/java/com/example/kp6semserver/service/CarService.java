@@ -18,28 +18,28 @@ public class CarService {
 
     public List<CarEntity> getAllCars() { return carRepo.findAll();}
 
-    public Double[] getLocation (Long id) {
-        Optional<CarEntity> optionalCar = carRepo.findById(id);
-        CarEntity car = optionalCar.get();
-        return car.getLocation();
-    }
+//    public Double[] getLocation (Long id) {
+//        Optional<CarEntity> optionalCar = carRepo.findById(id);
+//        CarEntity car = optionalCar.get();
+//        return car.getLocation();
+//    }
 
     public void deleteCar(Long id) { carRepo.deleteById(id);}
 
-    public CarEntity update (CarEntity car) throws ObjDoesNotExist {
-        return carRepo.findById(car.getId())
-                .map(newCar -> {
-                    newCar.setBrand(car.getBrand());
-                    newCar.setEngineCapacity(car.getEngineCapacity());
-                    newCar.setIsMaintained(car.getIsMaintained());
-                    newCar.setName(car.getName());
-                    newCar.setPlateNumber(car.getPlateNumber());
-                    newCar.setSeatsQuantity(car.getSeatsQuantity());
-                    newCar.setStereo(car.getStereo());
-                    newCar.setTariff(car.getTariff());
-                    newCar.setYear(car.getYear());
-                    newCar.setLocation(car.getLocation());
-                    return carRepo.save(car);
-                }).orElseThrow(() -> new ObjDoesNotExist("Такого автомобиля в системе не существует"));
-    }
+//    public CarEntity update (CarEntity car) throws ObjDoesNotExist {
+//        return carRepo.findById(car.getId())
+//                .map(newCar -> {
+//                    newCar.setBrand(car.getBrand());
+//                    newCar.setEngineCapacity(car.getEngineCapacity());
+//                    newCar.setIsMaintained(car.getIsMaintained());
+//                    newCar.setName(car.getName());
+//                    newCar.setPlateNumber(car.getPlateNumber());
+//                    newCar.setSeatsQuantity(car.getSeatsQuantity());
+//                    newCar.setStereo(car.getStereo());
+//                    newCar.setTariff(car.getTariff());
+//                    newCar.setYear(car.getYear());
+//                    newCar.setLocation(car.getLocation());
+//                    return carRepo.save(car);
+//                }).orElseThrow(() -> new ObjDoesNotExist("Такого автомобиля в системе не существует"));
+//    }
 }

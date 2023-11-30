@@ -1,8 +1,6 @@
 package com.example.kp6semserver.model;
 
-import com.example.kp6semserver.entity.OrderEntity;
-import com.example.kp6semserver.entity.RentalEntity;
-import com.example.kp6semserver.entity.ReportEntity;
+import com.example.kp6semserver.entity.RecordEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,10 +13,10 @@ public class RentalModel {
     private String rentalTime;
     private String lastOrderTime;
 
-    public static ArrayList<RentalModel> toModel(List<RentalEntity> list) {
+    public static ArrayList<RentalModel> toModel(List<RecordEntity> list) {
         ArrayList<RentalModel> resList = new ArrayList<RentalModel>();
 
-        for(RentalEntity entity : list) {
+        for(RecordEntity entity : list) {
             RentalModel model = new RentalModel();
 
             model.setId(entity.getId());
