@@ -14,15 +14,14 @@ public class CarEntity {
     private String name;
     private String year;
     private String isMaintained;
-    private String brand;
     private String seatsQuantity;
     private String engineCapacity;
-    private String stereo;
     private String plateNumber;
-    private String price;
+    private String tariff;
 
-//    @OneToMany(mappedBy = "car")
-//    private List<OrderEntity> orders_car;
+    @ManyToOne
+    @JoinColumn(name = "dealer_id")
+    private DealerEntity dealer;
 
     public CarEntity() {
     }
@@ -59,14 +58,6 @@ public class CarEntity {
         this.isMaintained = isMaintained;
     }
 
-    public String getBrand() {
-        return brand;
-    }
-
-    public void setBrand(String brand) {
-        this.brand = brand;
-    }
-
     public String getSeatsQuantity() {
         return seatsQuantity;
     }
@@ -83,14 +74,6 @@ public class CarEntity {
         this.engineCapacity = engineCapacity;
     }
 
-    public String getStereo() {
-        return stereo;
-    }
-
-    public void setStereo(String stereo) {
-        this.stereo = stereo;
-    }
-
     public String getPlateNumber() {
         return plateNumber;
     }
@@ -99,4 +82,11 @@ public class CarEntity {
         this.plateNumber = plateNumber;
     }
 
+    public String getTariff() {
+        return tariff;
+    }
+
+    public void setTariff(String tariff) {
+        this.tariff = tariff;
+    }
 }

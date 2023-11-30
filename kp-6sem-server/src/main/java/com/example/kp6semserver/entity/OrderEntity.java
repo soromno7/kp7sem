@@ -10,13 +10,14 @@ public class OrderEntity {
     private Long id;
     private String orderTime;
     private String orderDate;
-    private String drivePrice;
-    private String driveLength;
+    private String price;
+    private String start_date;
+    private String end_date;
     private String promocode;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UserEntity user;
+    private UserEntity order;
 
     @OneToOne(mappedBy = "order")
     private DealerEntity dealer;
@@ -48,31 +49,35 @@ public class OrderEntity {
         this.orderDate = orderDate;
     }
 
-    public String getDrivePrice() {
-        return drivePrice;
+    public String getPrice() {
+        return price;
     }
 
-    public void setDrivePrice(String drivePrice) {
-        this.drivePrice = drivePrice;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
-    public String getDriveLength() {
-        return driveLength;
+    public String getStart_date() {
+        return start_date;
     }
 
-    public void setDriveLength(String driveLength) {
-        this.driveLength = driveLength;
+    public void setStart_date(String start_date) {
+        this.start_date = start_date;
     }
 
-    public UserEntity getUser() {
-        return user;
+    public String getEnd_date() {
+        return end_date;
     }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
+    public void setEnd_date(String end_date) {
+        this.end_date = end_date;
     }
 
-    public String getPromocode() { return promocode; }
+    public String getPromocode() {
+        return promocode;
+    }
 
-    public void setPromocode(String promocode) { this.promocode = promocode; }
+    public void setPromocode(String promocode) {
+        this.promocode = promocode;
+    }
 }

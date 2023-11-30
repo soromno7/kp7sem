@@ -1,31 +1,25 @@
 package com.example.kp6semserver.entity;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 
 import java.util.List;
 
 @Entity
-@Table(name = "Dealer")
-public class DealerEntity {
+@Table(name = "ServiceStation")
+public class ServiceStationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String address;
 
-    @OneToOne
-    @JoinColumn(name = "order_id")
-    private OrderEntity order;
 
-    @OneToOne(mappedBy = "dealer")
-    private ContractEntity contract;
+    @ManyToOne
+    @JoinColumn(name = "dealer_id")
+    private DealerEntity service_station;
 
-    @OneToMany(mappedBy = "dealer")
-    private List<CarEntity> cars;
-
-    @OneToMany(mappedBy = "service_station")
-    private List<ServiceStationEntity> service_station;
-
-    public DealerEntity() {
+    public ServiceStationEntity() {
     }
 
     public Long getId() {
@@ -43,4 +37,15 @@ public class DealerEntity {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getAddress() {
+        return name;
+    }
+
+    public void setAddress(String name) {
+        this.name = name;
+    }
+
+
+
 }

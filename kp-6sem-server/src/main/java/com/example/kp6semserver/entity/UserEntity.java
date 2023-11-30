@@ -20,11 +20,11 @@ public class UserEntity {
     private String first_name;
     private String last_name;
 
-    @OneToMany(mappedBy = "user")
-    private List<OrderEntity> user_orders;
+    @OneToMany(mappedBy = "order")
+    private List<OrderEntity> orders;
 
     @OneToMany(mappedBy = "record")
-    private List<RecordEntity> user_records;
+    private List<RecordEntity> records;
 
     public UserEntity() {
     }

@@ -13,14 +13,13 @@ public class RecordEntity {
 
     private String orderQuantity;
     private String orderSum;
-    private String rentalDate;
-    private String rentalTime;
-
+    private String recordDate;
+    private String recordTime;
     private String lastOrderTime;
 
     @ManyToOne
-    @JoinColumn(name = "record_id")
-    private RecordEntity record;
+    @JoinColumn(name = "user_id")
+    private UserEntity record;
 
     public RecordEntity() {
     }
@@ -49,20 +48,20 @@ public class RecordEntity {
         this.orderSum = orderSum;
     }
 
-    public String getRentalDate() {
-        return rentalDate;
+    public String getRecordDate() {
+        return recordDate;
     }
 
-    public void setRentalDate(String rentalDate) {
-        this.rentalDate = rentalDate;
+    public void setRecordDate(String recordDate) {
+        this.recordDate = recordDate;
     }
 
-    public String getRentalTime() {
-        return rentalTime;
+    public String getRecordTime() {
+        return recordTime;
     }
 
-    public void setRentalTime(String rentalTime) {
-        this.rentalTime = rentalTime;
+    public void setRecordTime(String recordTime) {
+        this.recordTime = recordTime;
     }
 
     public String getLastOrderTime() {
