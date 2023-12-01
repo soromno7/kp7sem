@@ -8,6 +8,7 @@ function Table({ URL, rows, cols, setRows, setUpdateTable, setSelectedRow }) {
   const tableHandler = async () => {
     const res = await axios.get(URL);
     setRows(res.data);
+    console.log(res.data)
   };
 
   const updateRow = async (item) => {

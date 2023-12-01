@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import LoginPage from "./pages/login/LoginPage";
 import MainPage from "./pages/main/MainPage";
 import RegisterPage from "./pages/register/RegisterPage";
@@ -8,6 +7,8 @@ import UnknownPage from "./pages/unknown/UnknownPage";
 import ProfilePage from "./pages/profile/ProfilePage";
 import UsersPage from "./pages/users/UsersPage";
 import StationsPage from "./pages/stations/StationsPage";
+import DealersPage from "./pages/dealers/DealersPage";
+import CarsPage from "./pages/cars/CarsPage";
 
 function App() {
   return (
@@ -26,8 +27,8 @@ function App() {
         >
           <Route path="users" element={<UsersPage />} />
           <Route path="stations" element={<StationsPage />} />
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="profile" element={<ProfilePage />} />
+          <Route path="dealers" element={<DealersPage />} />
+          <Route path="cars" element={<CarsPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="profile" element={<ProfilePage />} />

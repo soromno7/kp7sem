@@ -1,11 +1,15 @@
 package com.example.kp6semserver.service;
 
 import com.example.kp6semserver.entity.CarEntity;
+import com.example.kp6semserver.entity.DealerEntity;
 import com.example.kp6semserver.exception.common.ObjDoesNotExist;
+import com.example.kp6semserver.model.CarModel;
 import com.example.kp6semserver.repository.CarRepo;
+import com.example.kp6semserver.repository.DealerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,9 +18,17 @@ public class CarService {
     @Autowired
     private CarRepo carRepo;
 
-    public CarEntity registration (CarEntity car) { return carRepo.save(car);}
+    @Autowired
+    private DealerRepo dealerRepo;
 
-    public List<CarEntity> getAllCars() { return carRepo.findAll();}
+    public CarEntity create (CarEntity car, Long dealerID) {
+        DealerEntity dealer = dealerRepo.findById(dealerID).get();
+
+        car.setDealer(dealer);
+        return carRepo.save(car);
+    }
+
+    public ArrayList<CarModel> getAllCars() { return CarModel.toModel(carRepo.findAll());}
 
 //    public Double[] getLocation (Long id) {
 //        Optional<CarEntity> optionalCar = carRepo.findById(id);

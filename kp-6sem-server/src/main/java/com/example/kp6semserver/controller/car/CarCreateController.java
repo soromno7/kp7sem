@@ -15,11 +15,22 @@ public class CarCreateController {
     @Autowired
     private CarService carService;
 
-    @PostMapping
-    public ResponseEntity registration(@RequestBody CarEntity car){
+//    @PostMapping
+//    public ResponseEntity registration(@RequestBody CarEntity car){
+//        try {
+//            carService.registration(car);
+//            return ResponseEntity.ok("Автомобиль добавлен");
+//        } catch(Exception e){
+//            return ResponseEntity.badRequest().body("Произошла ошибка: " + e.getMessage());
+//        }
+//    }
+
+    @PostMapping("/{dealerID}")
+    public ResponseEntity create(@RequestBody CarEntity car,
+                                      @PathVariable Long dealerID)
+    {
         try {
-            carService.registration(car);
-            return ResponseEntity.ok("Автомобиль добавлен");
+            return ResponseEntity.ok(carService.create(car, dealerID));
         } catch(Exception e){
             return ResponseEntity.badRequest().body("Произошла ошибка: " + e.getMessage());
         }

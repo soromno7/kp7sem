@@ -1,11 +1,11 @@
 package com.example.kp6semserver.controller.car;
 
-import com.example.kp6semserver.entity.CarEntity;
+import com.example.kp6semserver.model.CarModel;
 import com.example.kp6semserver.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.ArrayList;
 
 @RestController
 @CrossOrigin (origins = "http://localhost:3000")
@@ -16,7 +16,7 @@ public class CarGetAllController {
     private CarService carService;
 
     @GetMapping
-    public List<CarEntity> getAllCars () {
+    public ArrayList<CarModel> getAllCars () {
         return carService.getAllCars();
     }
 

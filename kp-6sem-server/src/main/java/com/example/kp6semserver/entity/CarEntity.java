@@ -89,4 +89,12 @@ public class CarEntity {
     public void setTariff(String tariff) {
         this.tariff = tariff;
     }
+
+    public DealerEntity getDealer() {
+        return dealer;
+    }
+
+    public void setDealer(DealerEntity dealer) {
+        this.dealer = dealer;
+    }
 }
