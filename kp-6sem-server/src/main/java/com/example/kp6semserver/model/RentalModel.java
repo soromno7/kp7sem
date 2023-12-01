@@ -20,8 +20,8 @@ public class RentalModel {
             RentalModel model = new RentalModel();
 
             model.setId(entity.getId());
-            model.setRentalDate(entity.getRentalDate());
-            model.setRentalTime(entity.getRentalTime());
+//            model.setRentalDate(entity.getRentalDate());
+//            model.setRentalTime(entity.getRentalTime());
             model.setOrderQuantity(entity.getOrderQuantity());
             model.setOrderSum(entity.getOrderSum());
             model.setLastOrderTime(entity.getLastOrderTime());

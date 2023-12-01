@@ -25,7 +25,6 @@ function LoginPage() {
     await axios
       .post("http://localhost:8080/login", user)
       .then((res) => {
-        console.log(res.data);
         sessionHandler(res.data);
       })
       .then(() => {

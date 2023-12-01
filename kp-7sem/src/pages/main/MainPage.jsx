@@ -17,6 +17,7 @@ function MainPage() {
                         <Link to={el.path} key={`${el.path}` + `${el.name}`}>{el.name}</Link>
                     )
                 }
+                <Link to="/" onClick={() => sessionStorage.clear()}>Выйти</Link>
             </div>
             <Outlet />
         </div>

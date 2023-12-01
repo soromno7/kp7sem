@@ -19,8 +19,9 @@ public class OrderEntity {
     @JoinColumn(name = "user_id")
     private UserEntity order;
 
-    @OneToOne(mappedBy = "order")
-    private DealerEntity dealer;
+    @ManyToOne
+    @JoinColumn(name = "dealer_id")
+    private DealerEntity dealer_order;
 
     public OrderEntity() {
     }

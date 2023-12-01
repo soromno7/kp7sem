@@ -1,39 +1,35 @@
 export const AdminRoutes = [
   {
-    path: "/",
+    path: "users",
     name: "Пользователи",
   },
   {
-    path: "/",
+    path: "orders",
     name: "Заказы",
   },
   {
-    path: "/",
+    path: "dealers",
     name: "Дилеры",
   },
   {
-    path: "/",
+    path: "cars",
     name: "Автомобили",
   },
   {
-    path: "/",
+    path: "contracts",
     name: "Контракты",
   },
   {
-    path: "/",
-    name: "Заявки на тех. осмотр",
-  },
-  {
-    path: "/",
+    path: "stations",
     name: "Станции обслуживания",
   },
   {
-    path: "/",
+    path: "records",
     name: "Отчёты",
   },
   {
-    path: "/",
-    name: "Выйти",
+    path: "profile",
+    name: "Профиль",
   }
 ];
 
@@ -43,23 +39,19 @@ export const UserRoutes = [
     name: "Главная страница",
   },
   {
-    path: "/",
+    path: "rent",
     name: "Аренда",
   },
   {
-    path: "/",
+    path: "my-orders",
     name: "Мои заказы",
   },
   {
-    path: "/",
+    path: "my-car",
     name: "Мой автомобиль",
   },
   {
     path: "profile",
     name: "Профиль",
-  },
-  {
-    path: "/",
-    name: "Выйти",
   }
 ];

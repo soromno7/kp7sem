@@ -3,9 +3,11 @@ import LoginPage from "./pages/login/LoginPage";
 import MainPage from "./pages/main/MainPage";
 import RegisterPage from "./pages/register/RegisterPage";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import PrivateRoute from "./components/PrivateRoute";
 import UnknownPage from "./pages/unknown/UnknownPage";
 import ProfilePage from "./pages/profile/ProfilePage";
+import UsersPage from "./pages/users/UsersPage";
+import StationsPage from "./pages/stations/StationsPage";
 
 function App() {
   return (
@@ -22,6 +24,16 @@ function App() {
             </PrivateRoute>
           }
         >
+          <Route path="users" element={<UsersPage />} />
+          <Route path="stations" element={<StationsPage />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="profile" element={<ProfilePage />} />
+          <Route path="profile" element={<ProfilePage />} />
           <Route path="profile" element={<ProfilePage />} />
         </Route>
         <Route path="*" element={<UnknownPage />} />

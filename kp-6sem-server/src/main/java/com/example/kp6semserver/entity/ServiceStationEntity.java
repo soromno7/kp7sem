@@ -39,11 +39,11 @@ public class ServiceStationEntity {
     }
 
     public String getAddress() {
-        return name;
+        return address;
     }
 
-    public void setAddress(String name) {
-        this.name = name;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
 

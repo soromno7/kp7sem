@@ -35,7 +35,7 @@ public class OrderService {
         String strDate = formatDate.format(date);
         String strTime = formatTime.format(date);
 
-        String[] driveLengthDelimited = order.getDriveLength().split(":");
+//        String[] driveLengthDelimited = order.get().split(":");
 
         OrderService orderService = new OrderService();
         String promocode = orderService.createPromocode();
@@ -44,7 +44,7 @@ public class OrderService {
 
 //        String drivePrice = calculatePrice(driveLengthDelimited, tariff, flag);
 
-        order.setUser(user);
+//        order.setUser(user);
 //        order.setCar(car);
         order.setOrderDate(strDate);
         order.setOrderTime(strTime);

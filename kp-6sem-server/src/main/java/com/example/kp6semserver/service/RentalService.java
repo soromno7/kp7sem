@@ -35,8 +35,8 @@ public class RentalService {
         String strDate = formatDate.format(date);
         String strTime = formatTime.format(date);
 
-        rental.setRentalDate(strDate);
-        rental.setRentalTime(strTime);
+        rental.setRecordDate(strDate);
+        rental.setRecordTime(strTime);
         rental.setOrderQuantity(orderQuantity);
         rental.setOrderSum(orderSum);
         rental.setLastOrderTime(lastOrderTime);
@@ -48,7 +48,7 @@ public class RentalService {
         double sum = 0;
 
         for(OrderEntity entity : orders) {
-            sum += Double.parseDouble(entity.getDrivePrice());
+            sum += Double.parseDouble(entity.getPrice());
         }
 
         return String.valueOf(sum);

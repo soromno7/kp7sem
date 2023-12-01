@@ -12,9 +12,8 @@ public class DealerEntity {
     private Long id;
     private String name;
 
-    @OneToOne
-    @JoinColumn(name = "order_id")
-    private OrderEntity order;
+    @OneToMany(mappedBy = "dealer_order")
+    private List<OrderEntity> orders;
 
     @OneToOne(mappedBy = "dealer")
     private ContractEntity contract;
