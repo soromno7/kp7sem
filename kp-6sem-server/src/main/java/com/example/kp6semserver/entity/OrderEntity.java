@@ -21,7 +21,7 @@ public class OrderEntity {
 
     @ManyToOne
     @JoinColumn(name = "dealer_id")
-    private DealerEntity dealer_order;
+    private DealerEntity dealer;
 
     public OrderEntity() {
     }

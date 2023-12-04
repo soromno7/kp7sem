@@ -35,7 +35,7 @@ export const AdminRoutes = [
 
 export const UserRoutes = [
   {
-    path: "/",
+    path: "",
     name: "Главная страница",
   },
   {

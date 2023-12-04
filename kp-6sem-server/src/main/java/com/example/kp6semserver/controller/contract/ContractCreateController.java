@@ -1,26 +1,28 @@
-package com.example.kp6semserver.controller.serviceStation;
+package com.example.kp6semserver.controller.contract;
 
 import com.example.kp6semserver.entity.CarEntity;
-import com.example.kp6semserver.entity.ServiceStationEntity;
-import com.example.kp6semserver.service.ServiceStationService;
+import com.example.kp6semserver.entity.ContractEntity;
+import com.example.kp6semserver.exception.common.ObjAlreadyExists;
+import com.example.kp6semserver.service.CarService;
+import com.example.kp6semserver.service.ContractService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin (origins = "http://localhost:3000")
-@RequestMapping("/service/add")
-public class ServiceCreateController {
+@RequestMapping("/contract/add")
+public class ContractCreateController {
 
     @Autowired
-    private ServiceStationService stationService;
+    private ContractService contractService;
 
     @PostMapping("/{dealerID}")
-    public ResponseEntity create(@RequestBody ServiceStationEntity station,
+    public ResponseEntity create(@RequestBody ContractEntity contract,
                                  @PathVariable Long dealerID)
     {
         try {
-            return ResponseEntity.ok(stationService.create(station, dealerID));
+            return ResponseEntity.ok(contractService.create(contract, dealerID));
         } catch(Exception e){
             return ResponseEntity.badRequest().body("Произошла ошибка: " + e.getMessage());
         }

@@ -1,5 +1,4 @@
 import LoginPage from "./pages/login/LoginPage";
-import MainPage from "./pages/main/MainPage";
 import RegisterPage from "./pages/register/RegisterPage";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import PrivateRoute from "./components/PrivateRoute";
@@ -9,6 +8,10 @@ import UsersPage from "./pages/users/UsersPage";
 import StationsPage from "./pages/stations/StationsPage";
 import DealersPage from "./pages/dealers/DealersPage";
 import CarsPage from "./pages/cars/CarsPage";
+import ContractsPage from "./pages/contracts/ContractsPage";
+import RentPage from "./pages/rent/RentPage";
+import WrapperPage from "./pages/wrapper/WrapperPage";
+import MainPage from "./pages/main/MainPage";
 
 function App() {
   return (
@@ -21,17 +24,17 @@ function App() {
           path="main"
           element={
             <PrivateRoute>
-              <MainPage />
+              <WrapperPage />
             </PrivateRoute>
           }
         >
+          <Route index element={<MainPage />} />
           <Route path="users" element={<UsersPage />} />
           <Route path="stations" element={<StationsPage />} />
           <Route path="dealers" element={<DealersPage />} />
           <Route path="cars" element={<CarsPage />} />
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="profile" element={<ProfilePage />} />
+          <Route path="contracts" element={<ContractsPage />} />
+          <Route path="rent" element={<RentPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="profile" element={<ProfilePage />} />

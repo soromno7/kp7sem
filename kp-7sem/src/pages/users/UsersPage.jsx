@@ -249,6 +249,7 @@ function UsersPage() {
         setUpdateTable={setUpdateTable}
         setSelectedRow={setSelRow}
         selRow={selRow}
+        updateURL={"user/update"}
       />
     </div>
   );

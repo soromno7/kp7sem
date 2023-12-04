@@ -30,6 +30,18 @@ public class CarService {
 
     public ArrayList<CarModel> getAllCars() { return CarModel.toModel(carRepo.findAll());}
 
+    public ArrayList<CarModel> getCarsByDealer(Long dealerID) {
+        String dealerName = dealerRepo.findById(dealerID).get().getName();
+
+        ArrayList<CarModel> resArr = new ArrayList<CarModel>();
+        ArrayList<CarModel> allCars = CarModel.toModel(carRepo.findAll());
+
+        for(CarModel model : allCars) {
+            if(model.getDealer().equals(dealerName)) resArr.add(model);
+        }
+        return resArr;
+    }
+
 //    public Double[] getLocation (Long id) {
 //        Optional<CarEntity> optionalCar = carRepo.findById(id);
 //        CarEntity car = optionalCar.get();

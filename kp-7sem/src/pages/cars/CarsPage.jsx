@@ -278,6 +278,7 @@ function CarsPage() {
         setUpdateTable={setUpdateTable}
         setSelectedRow={setSelRow}
         selRow={selRow}
+        updateURL={"car/update"}
       />
     </div>
   );

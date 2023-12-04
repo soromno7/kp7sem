@@ -11,15 +11,40 @@ public class ServiceStationEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    private String address;
+    private String city;
+    private String street;
+    private String street_number;
 
 
     @ManyToOne
     @JoinColumn(name = "dealer_id")
-    private DealerEntity service_station;
+    private DealerEntity dealer;
 
     public ServiceStationEntity() {
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getStreet_number() {
+        return street_number;
+    }
+
+    public void setStreet_number(String street_number) {
+        this.street_number = street_number;
     }
 
     public Long getId() {
@@ -30,22 +55,11 @@ public class ServiceStationEntity {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public DealerEntity getDealer() {
+        return dealer;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDealer(DealerEntity dealer) {
+        this.dealer = dealer;
     }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-
-
 }

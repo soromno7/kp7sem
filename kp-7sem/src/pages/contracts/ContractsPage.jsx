@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 
-function StationsPage() {
+function ContractsPage() {
   const [rows, setRows] = useState([]);
 
   const [open, setOpen] = useState(false);
@@ -21,9 +21,8 @@ function StationsPage() {
   const handleClose = () => setOpen(false);
 
   const [dealer, setDealer] = useState();
-  const [city, setCity] = useState();
-  const [street, setStreet] = useState();
-  const [street_number, setStreetNumber] = useState();
+  const [price, setPrice] = useState();
+  const [quantity, setQuantity] = useState();
 
   const [updateTable, setUpdateTable] = useState(() => {});
   const [selRow, setSelRow] = useState();
@@ -31,16 +30,13 @@ function StationsPage() {
   const [dealers, setDealers] = useState([]);
 
   const createHandler = async () => {
-    const station = {
-      city,
-      street,
-      street_number
+    const contract = {
+      price,
+      quantity,
     };
 
-    console.log(city)
-
     await axios
-      .post(`http://localhost:8080/service/add/${dealer}`, station)
+      .post(`http://localhost:8080/contract/add/${dealer}`, contract)
       .then((res) => {
         console.log(res);
       })
@@ -53,7 +49,7 @@ function StationsPage() {
 
   const deleteHandler = async () => {
     await axios
-      .delete(`http://localhost:8080/service/delete/${selRow.id}`)
+      .delete(`http://localhost:8080/contract/delete/${selRow.id}`)
       .then(() => updateTable());
   };
 
@@ -70,9 +66,8 @@ function StationsPage() {
   const cols = [
     { field: "id", headerName: "ID" },
     { field: "dealer", headerName: "Дилер" },
-    { field: "city", headerName: "Город" },
-    { field: "street", headerName: "Улица" },
-    { field: "street_number", headerName: "Номер здания" },
+    { field: "price", headerName: "Цена" },
+    { field: "quantity", headerName: "Количество тех. осмотров" },
   ];
 
   const style = {
@@ -101,7 +96,7 @@ function StationsPage() {
             component="h4"
             style={{ textAlign: "center" }}
           >
-            Добавить СТО
+            Добавить контракт дилеру
           </Typography>
           <Typography id="descr" sx={{ mt: 4 }} component={"span"}>
             <div className="modal-container">
@@ -120,19 +115,6 @@ function StationsPage() {
                   ))}
                 </Select>
               </FormControl>
-              <TextField
-                id="filled-basic"
-                label="Город"
-                variant="filled"
-                style={{ backgroundColor: "white", borderRadius: "4px" }}
-                onChange={(val) => {
-                  setCity(val.target.value);
-                }}
-                sx={{
-                  width: 350,
-                }}
-                InputProps={{ sx: { height: 52 } }}
-              />
               <div
                 style={{
                   display: "flex",
@@ -142,11 +124,11 @@ function StationsPage() {
               >
                 <TextField
                   id="filled-basic"
-                  label="Улица"
+                  label="Цена"
                   variant="filled"
                   style={{ backgroundColor: "white", borderRadius: "4px" }}
                   onChange={(val) => {
-                    setStreet(val.target.value);
+                    setPrice(val.target.value);
                   }}
                   sx={{
                     width: 165,
@@ -155,11 +137,11 @@ function StationsPage() {
                 />
                 <TextField
                   id="filled-basic"
-                  label="Номер здания"
+                  label="Количество осмотров"
                   variant="filled"
                   style={{ backgroundColor: "white", borderRadius: "4px" }}
                   onChange={(val) => {
-                    setStreetNumber(val.target.value);
+                    setQuantity(val.target.value);
                   }}
                   sx={{
                     width: 165,
@@ -200,14 +182,14 @@ function StationsPage() {
         cols={cols}
         rows={rows}
         setRows={setRows}
-        URL={"http://localhost:8080/service/get-all"}
+        URL={"http://localhost:8080/contract/get-all"}
         setUpdateTable={setUpdateTable}
         setSelectedRow={setSelRow}
         selRow={selRow}
-        updateURL={"service/update"}
+        updateURL={"contract/update"}
       />
     </div>
   );
 }
 
-export default StationsPage;
+export default ContractsPage;

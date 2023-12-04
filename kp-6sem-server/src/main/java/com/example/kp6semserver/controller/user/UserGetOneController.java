@@ -6,17 +6,19 @@ import com.example.kp6semserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 @CrossOrigin (origins = "http://localhost:3000")
-@RequestMapping("/user/update")
-public class UserUpdateController {
+@RequestMapping("/user/get")
+public class UserGetOneController {
 
     @Autowired
     private UserService userService;
 
-    @PatchMapping("/{id}")
-    UserEntity updateUser(@RequestBody UserEntity user, @PathVariable Long id) throws ObjDoesNotExist {
-        return userService.update(user);
+    @GetMapping("/{id}")
+    Optional<UserEntity> getUser(@PathVariable Long id) throws ObjDoesNotExist {
+        return userService.getOneUser(id);
     }
 
 }

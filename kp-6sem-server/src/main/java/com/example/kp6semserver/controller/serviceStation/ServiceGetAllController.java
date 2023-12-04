@@ -1,6 +1,7 @@
 package com.example.kp6semserver.controller.serviceStation;
 
 import com.example.kp6semserver.entity.ServiceStationEntity;
+import com.example.kp6semserver.model.ServiceStationModel;
 import com.example.kp6semserver.service.ServiceStationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,7 @@ public class ServiceGetAllController {
     private ServiceStationService stationService;
 
     @GetMapping
-    public List<ServiceStationEntity> getAll () {
+    public List<ServiceStationModel> getAll () {
         return stationService.getAllServices();
     }
 

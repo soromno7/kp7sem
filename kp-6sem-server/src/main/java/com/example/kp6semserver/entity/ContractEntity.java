@@ -41,4 +41,12 @@ public class ContractEntity {
     public void setQuantity(String quantity) {
         this.quantity = quantity;
     }
+
+    public DealerEntity getDealer() {
+        return dealer;
+    }
+
+    public void setDealer(DealerEntity dealer) {
+        this.dealer = dealer;
+    }
 }

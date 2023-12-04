@@ -11,8 +11,12 @@ public class DealerEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String image;
+    private String slogan;
+    @Column(name = "descr", length = 800)
+    private String descr;
 
-    @OneToMany(mappedBy = "dealer_order")
+    @OneToMany(mappedBy = "dealer")
     private List<OrderEntity> orders;
 
     @OneToOne(mappedBy = "dealer")
@@ -21,8 +25,8 @@ public class DealerEntity {
     @OneToMany(mappedBy = "dealer")
     private List<CarEntity> cars;
 
-    @OneToMany(mappedBy = "service_station")
-    private List<ServiceStationEntity> service_station;
+    @OneToMany(mappedBy = "dealer")
+    private List<ServiceStationEntity> stations;
 
     public DealerEntity() {
     }
@@ -41,5 +45,29 @@ public class DealerEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getSlogan() {
+        return slogan;
+    }
+
+    public void setSlogan(String slogan) {
+        this.slogan = slogan;
+    }
+
+    public String getDescr() {
+        return descr;
+    }
+
+    public void setDescr(String descr) {
+        this.descr = descr;
     }
 }

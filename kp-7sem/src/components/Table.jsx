@@ -4,16 +4,16 @@ import { useEffect, useMemo, useState } from "react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 
-function Table({ URL, rows, cols, setRows, setUpdateTable, setSelectedRow }) {
+function Table({ URL, rows, cols, setRows, setUpdateTable, setSelectedRow, updateURL }) {
   const tableHandler = async () => {
     const res = await axios.get(URL);
     setRows(res.data);
     console.log(res.data)
   };
 
-  const updateRow = async (item) => {
+  const updateRow = async (URL, item) => {
     await axios
-    .put(`http://localhost:8080/user/update/${item.id}`, item)
+    .put(`http://localhost:8080/${URL}/${item.id}`, item)
   }
 
   useEffect(() => {
@@ -36,7 +36,7 @@ function Table({ URL, rows, cols, setRows, setUpdateTable, setSelectedRow }) {
         rowSelection={"single"}
         defaultColDef={defaultColDef}
         onRowClicked={(e) => setSelectedRow(e.data)}
-        onCellEditingStopped={(e) => updateRow(e.data)}
+        onCellEditingStopped={(e) => updateRow(updateURL, e.data)}
       />
     </div>
   );

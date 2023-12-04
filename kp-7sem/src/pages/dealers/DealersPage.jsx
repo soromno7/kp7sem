@@ -11,13 +11,19 @@ function DealersPage() {
   const handleClose = () => setOpen(false);
 
   const [name, setName] = useState();
+  const [image, setImage] = useState();
+  const [slogan, setSlogan] = useState();
+  const [descr, setDescr] = useState();
 
   const [updateTable, setUpdateTable] = useState(() => {});
   const [selRow, setSelRow] = useState();
 
   const createHandler = async () => {
     const dealer = {
-        name
+      name,
+      image,
+      slogan,
+      descr
     };
 
     await axios
@@ -41,6 +47,9 @@ function DealersPage() {
   const cols = [
     { field: "id", headerName: "ID" },
     { field: "name", headerName: "Дилер" },
+    { field: "slogan", headerName: "Слоган" },
+    { field: "descr", headerName: "Описание" },
+    { field: "image", headerName: "Фото" },
   ];
 
   const style = {
@@ -86,6 +95,45 @@ function DealersPage() {
                 }}
                 InputProps={{ sx: { height: 52 } }}
               />
+              <TextField
+                id="filled-basic"
+                label="Слоган"
+                variant="filled"
+                style={{ backgroundColor: "white", borderRadius: "4px" }}
+                onChange={(val) => {
+                  setSlogan(val.target.value);
+                }}
+                sx={{
+                  width: 350,
+                }}
+                InputProps={{ sx: { height: 52 } }}
+              />
+              <TextField
+                id="filled-basic"
+                label="Описание"
+                variant="filled"
+                style={{ backgroundColor: "white", borderRadius: "4px" }}
+                onChange={(val) => {
+                  setDescr(val.target.value);
+                }}
+                sx={{
+                  width: 350,
+                }}
+                InputProps={{ sx: { height: 52 } }}
+              />
+              <TextField
+                id="filled-basic"
+                label="Фото (URL)"
+                variant="filled"
+                style={{ backgroundColor: "white", borderRadius: "4px" }}
+                onChange={(val) => {
+                  setImage(val.target.value);
+                }}
+                sx={{
+                  width: 350,
+                }}
+                InputProps={{ sx: { height: 52 } }}
+              />
               <Button
                 variant="contained"
                 style={{ backgroundColor: "white", color: "black" }}
@@ -123,6 +171,7 @@ function DealersPage() {
         setUpdateTable={setUpdateTable}
         setSelectedRow={setSelRow}
         selRow={selRow}
+        updateURL={"dealer/update"}
       />
     </div>
   );

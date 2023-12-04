@@ -23,6 +23,9 @@ public class DealerService {
         return dealerRepo.findById(dealer.getId())
                 .map(newDealer -> {
                     newDealer.setName(dealer.getName());
+                    newDealer.setDescr(dealer.getDescr());
+                    newDealer.setImage(dealer.getImage());
+                    newDealer.setSlogan(dealer.getSlogan());
                     return dealerRepo.save(dealer);
                 }).orElseThrow(() -> new ObjDoesNotExist("Такого дилера в системе не существует"));
     }
