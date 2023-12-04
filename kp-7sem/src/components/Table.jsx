@@ -13,7 +13,7 @@ function Table({ URL, rows, cols, setRows, setUpdateTable, setSelectedRow, updat
 
   const updateRow = async (URL, item) => {
     await axios
-    .put(`http://localhost:8080/${URL}/${item.id}`, item)
+    .patch(`http://localhost:8080/${URL}/${item.id}`, item)
   }
 
   useEffect(() => {
