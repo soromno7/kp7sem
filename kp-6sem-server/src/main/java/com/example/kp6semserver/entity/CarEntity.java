@@ -13,8 +13,6 @@ public class CarEntity {
     private Long id;
     private String name;
     private String year;
-    private String isMaintained;
-    private String seatsQuantity;
     private String engineCapacity;
     private String plateNumber;
     private String tariff;
@@ -22,6 +20,9 @@ public class CarEntity {
     @ManyToOne
     @JoinColumn(name = "dealer_id")
     private DealerEntity dealer;
+
+    @OneToMany(mappedBy = "car")
+    private List<OrderEntity> order;
 
     public CarEntity() {
     }
@@ -48,22 +49,6 @@ public class CarEntity {
 
     public void setYear(String year) {
         this.year = year;
-    }
-
-    public String getIsMaintained() {
-        return isMaintained;
-    }
-
-    public void setIsMaintained(String isMaintained) {
-        this.isMaintained = isMaintained;
-    }
-
-    public String getSeatsQuantity() {
-        return seatsQuantity;
-    }
-
-    public void setSeatsQuantity(String seatsQuantity) {
-        this.seatsQuantity = seatsQuantity;
     }
 
     public String getEngineCapacity() {

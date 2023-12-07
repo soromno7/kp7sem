@@ -16,19 +16,23 @@ function CarsComponent({ selectedDealer }) {
     setSelectedCar(el);
     setOpen(true);
   };
-  const handleClose = () => setOpen(false);
+  const handleClose = () => {
+    setPrice('')
+    setOpen(false)
+  };
 
-  const [a, setA] = useState();
   const [selectedCar, setSelectedCar] = useState({});
   const [startDate, setStartDate] = useState({});
   const [endDate, setEndDate] = useState({});
+  const [price, setPrice] = useState('');
+  const [promocode, setPromocode] = useState('')
 
   const style = {
     position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: 380,
+    width: 390,
     bgcolor: "background.paper",
     boxShadow: 24,
     p: 4,
@@ -37,10 +41,53 @@ function CarsComponent({ selectedDealer }) {
   const loadCars = async () => {
     await axios
       .get(`http://localhost:8080/car/get-by-dealer/${selectedDealer.id}`)
-      .then((res) => setCars(res.data))
+      .then((res) => setCars(res.data));
   };
 
-  const createHandler = () => {};
+  const calculateDays = (start, end) => {
+    start = start.split(".");
+    const date1 = new Date([start[1], ".", start[0], ".", start[2]].join(""));
+
+    end = end.split(".");
+    const date2 = new Date([end[1], ".", end[0], ".", end[2]].join(""));
+
+    let Difference_In_Time = date2.getTime() - date1.getTime();
+
+    let Difference_In_Days = Math.round(
+      Difference_In_Time / (1000 * 3600 * 24)
+    );
+
+    return Difference_In_Days;
+  };
+
+  const calculatePrice = async () => {
+    const days = calculateDays(startDate, endDate);
+
+    const data = {
+      days,
+      tariff: selectedCar.tariff,
+      promocode
+    }
+    
+    await axios.post('http://localhost:8080/order/get-price', data)
+    .then((res) => setPrice(res.data))
+  }
+
+  const userData = sessionStorage.user;
+  const id = Number(JSON.parse(userData).id);
+
+  const createHandler = async () => {
+    const order = {
+      price,
+      start_date: startDate,
+      end_date: endDate,
+      promocode
+    }
+
+    handleClose()
+
+    await axios.post(`http://localhost:8080/order/create/${id}/${selectedDealer.id}/${selectedCar.id}`, order)
+  };
 
   useEffect(() => {
     loadCars();
@@ -67,7 +114,6 @@ function CarsComponent({ selectedDealer }) {
           </Typography>
           <Typography id="descr" sx={{ mt: 4 }} component={"span"}>
             <LocalizationProvider dateAdapter={AdapterDayjs}>
-              
               <div className="modal-container">
                 <div
                   style={{
@@ -119,13 +165,36 @@ function CarsComponent({ selectedDealer }) {
                     />
                   </div>
                 </div>
-                <Button
-                  variant="contained"
-                  style={{ backgroundColor: "white", color: "black" }}
-                  onClick={createHandler}
-                >
-                  Рассчитать оплату
-                </Button>
+                <TextField
+                  id="filled-basic"
+                  label="Промокод"
+                  variant="filled"
+                  style={{ backgroundColor: "white", borderRadius: "4px" }}
+                  onChange={(val) => {
+                    setPromocode(val.target.value);
+                  }}
+                  sx={{
+                    width: 390,
+                  }}
+                  InputProps={{ sx: { height: 52 } }}
+                />
+                <span>Итого к оплате: {price} {price ? 'BYN' : ''}</span>
+                <div>
+                  <Button
+                    variant="contained"
+                    style={{ backgroundColor: "white", color: "black", marginRight: '10px' }}
+                    onClick={calculatePrice}
+                  >
+                    Рассчитать оплату
+                  </Button>
+                  {price ? <Button
+                    variant="contained"
+                    style={{ backgroundColor: "white", color: "black" }}
+                    onClick={createHandler}
+                  >
+                    Оформить заказ
+                  </Button> : ""}
+                </div>
               </div>
             </LocalizationProvider>
           </Typography>

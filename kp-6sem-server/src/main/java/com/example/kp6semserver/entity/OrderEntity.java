@@ -1,5 +1,8 @@
 package com.example.kp6semserver.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,11 +20,16 @@ public class OrderEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UserEntity order;
+    @JsonBackReference
+    private UserEntity user;
 
     @ManyToOne
     @JoinColumn(name = "dealer_id")
     private DealerEntity dealer;
+
+    @ManyToOne
+    @JoinColumn(name = "car_id")
+    private CarEntity car;
 
     public OrderEntity() {
     }
@@ -80,5 +88,29 @@ public class OrderEntity {
 
     public void setPromocode(String promocode) {
         this.promocode = promocode;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
+    public CarEntity getCar() {
+        return car;
+    }
+
+    public void setCar(CarEntity car) {
+        this.car = car;
+    }
+
+    public DealerEntity getDealer() {
+        return dealer;
+    }
+
+    public void setDealer(DealerEntity dealer) {
+        this.dealer = dealer;
     }
 }

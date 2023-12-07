@@ -13,13 +13,12 @@ public class OrderCreateController {
     @Autowired
     private OrderService orderService;
 
-    @PostMapping("/{userID}/{carID}")
+    @PostMapping("/{userID}/{dealerID}/{carID}")
     public ResponseEntity createOrder(@RequestBody OrderEntity order,
-                                      @PathVariable Long userID,
-                                      @PathVariable Long carID)
+                                      @PathVariable Long userID, @PathVariable Long dealerID, @PathVariable Long carID)
     {
         try {
-          return ResponseEntity.ok(orderService.create(order, userID, carID));
+          return ResponseEntity.ok(orderService.create(order, userID, dealerID, carID));
         } catch(Exception e){
             return ResponseEntity.badRequest().body("Произошла ошибка: " + e.getMessage());
         }

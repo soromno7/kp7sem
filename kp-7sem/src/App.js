@@ -12,6 +12,8 @@ import ContractsPage from "./pages/contracts/ContractsPage";
 import RentPage from "./pages/rent/RentPage";
 import WrapperPage from "./pages/wrapper/WrapperPage";
 import MainPage from "./pages/main/MainPage";
+import OrdersPage from "./pages/orders/OrdersPage";
+import UserOrdersPage from "./pages/userOrders/UserOrdersPage";
 
 function App() {
   return (
@@ -35,8 +37,8 @@ function App() {
           <Route path="cars" element={<CarsPage />} />
           <Route path="contracts" element={<ContractsPage />} />
           <Route path="rent" element={<RentPage />} />
-          <Route path="profile" element={<ProfilePage />} />
-          <Route path="profile" element={<ProfilePage />} />
+          <Route path="orders" element={<OrdersPage />} />
+          <Route path="my-orders" element={<UserOrdersPage />} />
           <Route path="profile" element={<ProfilePage />} />
           <Route path="profile" element={<ProfilePage />} />
         </Route>

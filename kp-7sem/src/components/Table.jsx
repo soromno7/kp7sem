@@ -7,8 +7,8 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 function Table({ URL, rows, cols, setRows, setUpdateTable, setSelectedRow, updateURL }) {
   const tableHandler = async () => {
     const res = await axios.get(URL);
-    setRows(res.data);
     console.log(res.data)
+    setRows(res.data);
   };
 
   const updateRow = async (URL, item) => {
@@ -28,6 +28,10 @@ function Table({ URL, rows, cols, setRows, setUpdateTable, setSelectedRow, updat
     };
   }, []);
 
+  const gridOptions = {
+    onGridReady: (event) => event.api.sizeColumnsToFit()
+  }
+
   return (
     <div className="ag-theme-alpine" style={{ height: 839 }}>
       <AgGridReact
@@ -36,6 +40,7 @@ function Table({ URL, rows, cols, setRows, setUpdateTable, setSelectedRow, updat
         rowSelection={"single"}
         defaultColDef={defaultColDef}
         onRowClicked={(e) => setSelectedRow(e.data)}
+        gridOptions={gridOptions}
         onCellEditingStopped={(e) => updateRow(updateURL, e.data)}
       />
     </div>

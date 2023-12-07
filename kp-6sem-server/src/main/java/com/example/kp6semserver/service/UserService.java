@@ -20,7 +20,9 @@ public class UserService {
         if(userRepo.findByEmail(user.getEmail()) != null){
             throw new ObjAlreadyExists("Пользователь с такой почтой уже существует");
         }
-        return userRepo.save(user);
+        userRepo.save(user);
+        UserEntity dbUser = userRepo.findByEmail(user.getEmail());
+        return dbUser;
     }
 
     public UserEntity login (UserEntity user) throws UserPasswordInvalid, ObjDoesNotExist {

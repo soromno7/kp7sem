@@ -16,16 +16,16 @@ public class DealerEntity {
     @Column(name = "descr", length = 800)
     private String descr;
 
-    @OneToMany(mappedBy = "dealer")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dealer")
     private List<OrderEntity> orders;
 
-    @OneToOne(mappedBy = "dealer")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "dealer")
     private ContractEntity contract;
 
-    @OneToMany(mappedBy = "dealer")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dealer")
     private List<CarEntity> cars;
 
-    @OneToMany(mappedBy = "dealer")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "dealer")
     private List<ServiceStationEntity> stations;
 
     public DealerEntity() {

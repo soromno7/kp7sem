@@ -23,8 +23,6 @@ public class CarModel {
         model.setId(entity.getId());
         model.setName(entity.getName());
         model.setYear(entity.getYear());
-        model.setIsMaintained(entity.getIsMaintained());
-        model.setSeatsQuantity(entity.getSeatsQuantity());
         model.setEngineCapacity(entity.getEngineCapacity());
         model.setPlateNumber(entity.getPlateNumber());
         model.setTariff(entity.getTariff());
@@ -42,8 +40,6 @@ public class CarModel {
             model.setId(entity.getId());
             model.setName(entity.getName());
             model.setYear(entity.getYear());
-            model.setIsMaintained(entity.getIsMaintained());
-            model.setSeatsQuantity(entity.getSeatsQuantity());
             model.setEngineCapacity(entity.getEngineCapacity());
             model.setPlateNumber(entity.getPlateNumber());
             model.setTariff(entity.getTariff());

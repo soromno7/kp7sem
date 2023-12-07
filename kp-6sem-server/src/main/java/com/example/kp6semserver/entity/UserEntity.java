@@ -1,8 +1,12 @@
 package com.example.kp6semserver.entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Builder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -20,10 +24,11 @@ public class UserEntity {
     private String first_name;
     private String last_name;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     private List<OrderEntity> orders;
 
-    @OneToMany(mappedBy = "record")
+    @OneToMany(mappedBy = "user")
     private List<RecordEntity> records;
 
     public UserEntity() {
@@ -100,4 +105,6 @@ public class UserEntity {
     public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
+
+
 }

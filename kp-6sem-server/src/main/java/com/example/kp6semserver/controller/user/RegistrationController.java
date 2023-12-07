@@ -18,8 +18,7 @@ public class RegistrationController {
     @PostMapping
     public ResponseEntity registration(@RequestBody UserEntity user){
         try {
-            userService.registration(user);
-            return ResponseEntity.ok("Пользователь зарегистрирован");
+            return ResponseEntity.ok(userService.registration(user));
         } catch(ObjAlreadyExists e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         } catch(Exception e){

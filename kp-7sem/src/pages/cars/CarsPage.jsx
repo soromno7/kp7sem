@@ -80,8 +80,6 @@ function CarsPage() {
     { field: "dealer", headerName: "Дилер" },
     { field: "name", headerName: "Название" },
     { field: "year", headerName: "Год" },
-    { field: "isMaintained", headerName: "Готова к работе" },
-    { field: "seatsQuantity", headerName: "Мест" },
     { field: "engineCapacity", headerName: "Объём двигателя" },
     { field: "plateNumber", headerName: "Номер" },
     { field: "tariff", headerName: "Тариф" },
@@ -169,11 +167,11 @@ function CarsPage() {
                 />
                 <TextField
                   id="filled-basic"
-                  label="Готова к работе"
+                  label="Объём двигателя"
                   variant="filled"
                   style={{ backgroundColor: "white", borderRadius: "4px" }}
                   onChange={(val) => {
-                    setIsMaintained(val.target.value);
+                    setEngineCapacity(val.target.value);
                   }}
                   sx={{
                     width: 165,
@@ -188,33 +186,6 @@ function CarsPage() {
                   width: "350px",
                 }}
               >
-                <TextField
-                  id="filled-basic"
-                  label="Мест"
-                  variant="filled"
-                  style={{ backgroundColor: "white", borderRadius: "4px" }}
-                  onChange={(val) => {
-                    setSeatsQuantity(val.target.value);
-                  }}
-                  sx={{
-                    width: 165,
-                  }}
-                  InputProps={{ sx: { height: 52 } }}
-                />
-                <TextField
-                  id="filled-basic"
-                  label="Объём двигателя"
-                  variant="filled"
-                  style={{ backgroundColor: "white", borderRadius: "4px" }}
-                  onChange={(val) => {
-                    setEngineCapacity(val.target.value);
-                  }}
-                  sx={{
-                    width: 165,
-                  }}
-                  InputProps={{ sx: { height: 52 } }}
-                />
-              </div>
               <TextField
                 id="filled-basic"
                 label="Номер"
@@ -224,7 +195,7 @@ function CarsPage() {
                   setPlateNumber(val.target.value);
                 }}
                 sx={{
-                  width: 350,
+                  width: 165,
                 }}
                 InputProps={{ sx: { height: 52 } }}
               />
@@ -237,10 +208,11 @@ function CarsPage() {
                   setTariff(val.target.value);
                 }}
                 sx={{
-                  width: 350,
+                  width: 165,
                 }}
                 InputProps={{ sx: { height: 52 } }}
               />
+              </div>
               <Button
                 variant="contained"
                 style={{ backgroundColor: "white", color: "black" }}

@@ -20,7 +20,6 @@ function RegisterPage() {
   const navigate = useNavigate();
 
   const sessionHandler = (data) => {
-    console.log(data);
     sessionStorage.user = JSON.stringify(data);
   };
 
@@ -38,10 +37,7 @@ function RegisterPage() {
 
     await axios
       .post("http://localhost:8080/registration", user)
-      .then((res) => {
-        console.log(res);
-      })
-      .then(() => sessionHandler(user))
+      .then((res) => sessionHandler(res.data))
       .then(() => {
         navigate("/main");
       })

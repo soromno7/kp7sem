@@ -19,7 +19,7 @@ public class RecordEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private UserEntity record;
+    private UserEntity user;
 
     public RecordEntity() {
     }
