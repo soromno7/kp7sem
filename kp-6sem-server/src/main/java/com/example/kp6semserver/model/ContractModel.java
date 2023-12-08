@@ -12,7 +12,7 @@ public class ContractModel {
 
     private String price;
     private String quantity;
-    private String dealer;
+    private Long order_id;
 
 
     public static ContractModel toModelOne(ContractEntity entity) {
@@ -20,7 +20,7 @@ public class ContractModel {
         model.setId(entity.getId());
         model.setPrice(entity.getPrice());
         model.setQuantity(entity.getQuantity());
-        model.setDealer(entity.getDealer().getName());
+        model.setOrder_id(entity.getOrder().getId());
 
         return model;
     }
@@ -34,7 +34,7 @@ public class ContractModel {
             model.setId(entity.getId());
             model.setPrice(entity.getPrice());
             model.setQuantity(entity.getQuantity());
-            model.setDealer(entity.getDealer().getName());
+            model.setOrder_id(entity.getOrder().getId());
 
             resList.add(model);
         }
@@ -69,11 +69,11 @@ public class ContractModel {
         this.quantity = quantity;
     }
 
-    public String getDealer() {
-        return dealer;
+    public Long getOrder_id() {
+        return order_id;
     }
 
-    public void setDealer(String dealer) {
-        this.dealer = dealer;
+    public void setOrder_id(Long order_id) {
+        this.order_id = order_id;
     }
 }

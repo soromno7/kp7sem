@@ -17,12 +17,12 @@ public class ContractCreateController {
     @Autowired
     private ContractService contractService;
 
-    @PostMapping("/{dealerID}")
+    @PostMapping("/{orderID}")
     public ResponseEntity create(@RequestBody ContractEntity contract,
-                                 @PathVariable Long dealerID)
+                                 @PathVariable Long orderID)
     {
         try {
-            return ResponseEntity.ok(contractService.create(contract, dealerID));
+            return ResponseEntity.ok(contractService.create(contract, orderID));
         } catch(Exception e){
             return ResponseEntity.badRequest().body("Произошла ошибка: " + e.getMessage());
         }

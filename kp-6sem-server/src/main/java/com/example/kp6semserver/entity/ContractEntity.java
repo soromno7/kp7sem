@@ -1,5 +1,6 @@
 package com.example.kp6semserver.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,8 +13,9 @@ public class ContractEntity {
     private String quantity;
 
     @OneToOne
-    @JoinColumn(name = "dealer_id")
-    private DealerEntity dealer;
+    @JoinColumn(name = "order_id")
+    @JsonBackReference
+    private OrderEntity order;
 
     public ContractEntity() {
     }
@@ -42,11 +44,11 @@ public class ContractEntity {
         this.quantity = quantity;
     }
 
-    public DealerEntity getDealer() {
-        return dealer;
+    public OrderEntity getOrder() {
+        return order;
     }
 
-    public void setDealer(DealerEntity dealer) {
-        this.dealer = dealer;
+    public void setOrder(OrderEntity order) {
+        this.order = order;
     }
 }

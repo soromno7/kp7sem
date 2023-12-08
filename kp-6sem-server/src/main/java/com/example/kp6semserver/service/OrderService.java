@@ -96,6 +96,18 @@ public class OrderService {
         return resArr;
     }
 
+    public OrderModel getLastOrder(Long ID) {
+        Optional<UserEntity> user = userRepo.findById(ID);
+
+        OrderModel lastOrder = new OrderModel();
+        ArrayList<OrderModel> allOrders = OrderModel.toModel(orderRepo.findAll());
+
+        for(OrderModel model : allOrders) {
+            if(model.getUserID().equals(user.get().getId())) lastOrder = model;
+        }
+        return lastOrder;
+    }
+
     public ArrayList<CarModel> getCarsByDealer(Long dealerID) {
         String dealerName = dealerRepo.findById(dealerID).get().getName();
 

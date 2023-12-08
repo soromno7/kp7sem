@@ -25,7 +25,6 @@ public class UserEntity {
     private String last_name;
 
     @OneToMany(mappedBy = "user")
-    @JsonManagedReference
     private List<OrderEntity> orders;
 
     @OneToMany(mappedBy = "user")

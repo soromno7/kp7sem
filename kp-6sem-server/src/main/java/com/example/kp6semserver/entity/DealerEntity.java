@@ -1,5 +1,6 @@
 package com.example.kp6semserver.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -19,8 +20,7 @@ public class DealerEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "dealer")
     private List<OrderEntity> orders;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "dealer")
-    private ContractEntity contract;
+
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "dealer")
     private List<CarEntity> cars;
