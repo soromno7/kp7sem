@@ -1,9 +1,11 @@
 package com.example.kp6semserver.model;
 
+import com.example.kp6semserver.entity.ContractEntity;
 import com.example.kp6semserver.entity.OrderEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class OrderModel {
     private Long id;
@@ -21,6 +23,9 @@ public class OrderModel {
     private String engineCapacity;
     private String plateNumber;
     private Long userID;
+    private Long dealerID;
+    private String contractQuantity;
+    private Long carID;
 
     public static OrderModel toModelOne(OrderEntity entity) {
         OrderModel model = new OrderModel();
@@ -39,6 +44,10 @@ public class OrderModel {
         model.setEngineCapacity(entity.getCar().getEngineCapacity());
         model.setPlateNumber(entity.getCar().getPlateNumber());
         model.setUserID(entity.getUser().getId());
+        model.setDealerID(entity.getDealer().getId());
+        model.setCarID(entity.getCar().getId());
+
+        if(!Objects.isNull(entity.getContract())) model.setContractQuantity(entity.getContract().getQuantity());
 
         return model;
     }
@@ -62,6 +71,10 @@ public class OrderModel {
             model.setEngineCapacity(entity.getCar().getEngineCapacity());
             model.setPlateNumber(entity.getCar().getPlateNumber());
             model.setUserID(entity.getUser().getId());
+            model.setDealerID(entity.getDealer().getId());
+            model.setCarID(entity.getCar().getId());
+
+            if(!Objects.isNull(entity.getContract())) model.setContractQuantity(entity.getContract().getQuantity());
 
             resList.add(model);
         }
@@ -190,5 +203,29 @@ public class OrderModel {
 
     public void setUserID(Long userID) {
         this.userID = userID;
+    }
+
+    public Long getDealerID() {
+        return dealerID;
+    }
+
+    public void setDealerID(Long dealerID) {
+        this.dealerID = dealerID;
+    }
+
+    public String getContractQuantity() {
+        return contractQuantity;
+    }
+
+    public void setContractQuantity(String contractQuantity) {
+        this.contractQuantity = contractQuantity;
+    }
+
+    public Long getCarID() {
+        return carID;
+    }
+
+    public void setCarID(Long carID) {
+        this.carID = carID;
     }
 }

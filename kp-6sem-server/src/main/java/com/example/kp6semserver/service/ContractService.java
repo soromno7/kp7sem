@@ -19,11 +19,7 @@ public class ContractService {
     @Autowired
     private OrderRepo orderRepo;
 
-    public ContractEntity create (ContractEntity contract, Long orderID) {
-        OrderEntity order = orderRepo.findById(orderID).get();
-
-
-        contract.setOrder(order);
+    public ContractEntity create (ContractEntity contract) {
         return contractRepo.save(contract);
     }
 

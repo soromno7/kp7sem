@@ -32,11 +32,6 @@ public class ServiceStationService {
 
     public ArrayList<ServiceStationModel> getAllServices() { return ServiceStationModel.toModel(serviceRepo.findAll());}
 
-//    public Double[] getLocation (Long id) {
-//        Optional<CarEntity> optionalCar = carRepo.findById(id);
-//        CarEntity car = optionalCar.get();
-//        return car.getLocation();
-//    }
 
     public void delete(Long id) { serviceRepo.deleteById(id);}
 
@@ -48,5 +43,15 @@ public class ServiceStationService {
 //                    newService.setName(service.getName());
 //                    return serviceRepo.save(service);
 //                }).orElseThrow(() -> new ObjDoesNotExist("Такого СТО в системе не существует"));
+    }
+
+    public ArrayList<ServiceStationEntity> getServicesByDealer(Long dealerID) {
+        ArrayList<ServiceStationEntity> resArr = new ArrayList<ServiceStationEntity>();
+        List<ServiceStationEntity> allServices = serviceRepo.findAll();
+
+        for(ServiceStationEntity entity : allServices) {
+            if(entity.getDealer().getId().equals(dealerID)) resArr.add(entity);
+        }
+        return resArr;
     }
 }

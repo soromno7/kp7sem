@@ -24,6 +24,9 @@ public class CarEntity {
     @OneToMany(mappedBy = "car")
     private List<OrderEntity> order;
 
+    @OneToMany(mappedBy = "car")
+    private List<MaintenanceEntity> maintenances;
+
     public CarEntity() {
     }
 
@@ -81,5 +84,13 @@ public class CarEntity {
 
     public void setDealer(DealerEntity dealer) {
         this.dealer = dealer;
+    }
+
+    public List<MaintenanceEntity> getMaintenances() {
+        return maintenances;
+    }
+
+    public void setMaintenances(List<MaintenanceEntity> maintenances) {
+        this.maintenances = maintenances;
     }
 }

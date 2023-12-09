@@ -1,16 +1,10 @@
 package com.example.kp6semserver.service;
 
-import com.example.kp6semserver.entity.DealerEntity;
+import com.example.kp6semserver.entity.*;
 import com.example.kp6semserver.model.CarModel;
 import com.example.kp6semserver.model.OrderModel;
-import com.example.kp6semserver.entity.CarEntity;
-import com.example.kp6semserver.entity.OrderEntity;
-import com.example.kp6semserver.entity.UserEntity;
 import com.example.kp6semserver.exception.common.ObjDoesNotExist;
-import com.example.kp6semserver.repository.CarRepo;
-import com.example.kp6semserver.repository.DealerRepo;
-import com.example.kp6semserver.repository.OrderRepo;
-import com.example.kp6semserver.repository.UserRepo;
+import com.example.kp6semserver.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +24,8 @@ public class OrderService {
     private CarRepo carRepo;
     @Autowired
     private DealerRepo dealerRepo;
+    @Autowired
+    private ContractRepo contractRepo;
 
     public OrderEntity create(OrderEntity order, Long userID, Long dealerID, Long carID) {
         UserEntity user = userRepo.findById(userID).get();
@@ -108,30 +104,14 @@ public class OrderService {
         return lastOrder;
     }
 
-    public ArrayList<CarModel> getCarsByDealer(Long dealerID) {
-        String dealerName = dealerRepo.findById(dealerID).get().getName();
-
-        ArrayList<CarModel> resArr = new ArrayList<CarModel>();
-        ArrayList<CarModel> allCars = CarModel.toModel(carRepo.findAll());
-
-        for(CarModel model : allCars) {
-            if(model.getDealer().equals(dealerName)) resArr.add(model);
-        }
-        return resArr;
+    public OrderEntity update(Long OrderID, Long contractID) throws ObjDoesNotExist {
+        ContractEntity contract = contractRepo.findById(contractID).get();
+        OrderEntity order = orderRepo.findById(OrderID).get();
+        return orderRepo.findById(OrderID)
+                .map(newOrder -> {
+                    newOrder.setContract(contract);
+                    return orderRepo.save(order);
+                }).orElseThrow(() -> new ObjDoesNotExist("Заказа не существует"));
     }
-
-//    public OrderEntity update(OrderEntity entity) throws ObjDoesNotExist {
-//        return orderRepo.findById(entity.getId())
-//                .map(newOrder -> {
-//                    newOrder.setOrderDate(entity.getOrderDate());
-//                    newOrder.setOrderTime(entity.getOrderTime());
-//                    newOrder.setDrivePrice(entity.getDrivePrice());
-//                    newOrder.setDriveLength(entity.getDriveLength());
-//                    newOrder.setCar(entity.getCar());
-//                    newOrder.setUser(entity.getUser());
-//                    newOrder.setId(entity.getId());
-//                    return orderRepo.save(entity);
-//                }).orElseThrow(() -> new ObjDoesNotExist("Заказа не существует"));
-//    }
 
 }

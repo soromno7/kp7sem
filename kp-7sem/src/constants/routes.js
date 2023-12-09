@@ -24,6 +24,10 @@ export const AdminRoutes = [
     name: "Станции обслуживания",
   },
   {
+    path: "maintenances",
+    name: "Заявки на СТО",
+  },
+  {
     path: "records",
     name: "Отчёты",
   },

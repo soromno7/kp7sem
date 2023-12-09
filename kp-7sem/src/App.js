@@ -15,6 +15,7 @@ import MainPage from "./pages/main/MainPage";
 import OrdersPage from "./pages/orders/OrdersPage";
 import UserOrdersPage from "./pages/userOrders/UserOrdersPage";
 import MyCarPage from "./pages/my-car/MyCarPage";
+import MaintenancesPage from "./pages/maintenances/MaintenancesPage";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="orders" element={<OrdersPage />} />
           <Route path="my-orders" element={<UserOrdersPage />} />
           <Route path="my-car" element={<MyCarPage />} />
+          <Route path="maintenances" element={<MaintenancesPage />} />
           <Route path="profile" element={<ProfilePage />} />
         </Route>
         <Route path="*" element={<UnknownPage />} />

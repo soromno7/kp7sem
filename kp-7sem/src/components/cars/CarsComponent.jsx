@@ -6,6 +6,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import "./cars.css";
 import CarItem from "./CarItem";
+import { useNavigate } from "react-router-dom";
 
 function CarsComponent({ selectedDealer }) {
   const [cars, setCars] = useState([]);
@@ -59,6 +60,8 @@ function CarsComponent({ selectedDealer }) {
 
     return Difference_In_Days;
   };
+
+  const navigate = useNavigate();
 
   const calculatePrice = async () => {
     const days = calculateDays(startDate, endDate);

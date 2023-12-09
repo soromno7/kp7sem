@@ -12,9 +12,7 @@ public class ContractEntity {
     private String price;
     private String quantity;
 
-    @OneToOne
-    @JoinColumn(name = "order_id")
-    @JsonBackReference
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "contract")
     private OrderEntity order;
 
     public ContractEntity() {

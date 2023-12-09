@@ -30,6 +30,9 @@ public class UserEntity {
     @OneToMany(mappedBy = "user")
     private List<RecordEntity> records;
 
+    @OneToMany(mappedBy = "user")
+    private List<MaintenanceEntity> maintenances;
+
     public UserEntity() {
     }
 
@@ -104,6 +107,5 @@ public class UserEntity {
     public void setLast_name(String last_name) {
         this.last_name = last_name;
     }
-
 
 }

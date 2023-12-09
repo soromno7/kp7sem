@@ -18,7 +18,6 @@ public class OrderEntity {
     private String start_date;
     private String end_date;
     private String promocode;
-    private String isContract;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
@@ -31,8 +30,8 @@ public class OrderEntity {
     @JoinColumn(name = "car_id")
     private CarEntity car;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "order")
-    @JsonManagedReference
+    @OneToOne
+    @JoinColumn(name = "contract_id")
     private ContractEntity contract;
 
     public OrderEntity() {
@@ -109,16 +108,6 @@ public class OrderEntity {
     public void setCar(CarEntity car) {
         this.car = car;
     }
-
-    public String getIsContract() {
-        return isContract;
-    }
-
-    public void setIsContract(String isContract) {
-        this.isContract = isContract;
-    }
-
-
 
     public ContractEntity getContract() {
         return contract;

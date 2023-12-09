@@ -16,10 +16,9 @@ public class OrderUpdateController {
     @Autowired
     private OrderService orderService;
 
-    @PutMapping("/{id}")
-    OrderEntity updateOrder(@RequestBody OrderEntity order, @PathVariable Long id) throws ObjDoesNotExist {
-//        return orderService.update(order);
-        return null;
+    @PatchMapping("/{orderID}/{contractID}")
+    OrderEntity updateOrder(@PathVariable Long orderID, @PathVariable Long contractID) throws ObjDoesNotExist {
+        return orderService.update(orderID, contractID);
     }
 
 }
