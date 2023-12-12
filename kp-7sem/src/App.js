@@ -16,6 +16,7 @@ import OrdersPage from "./pages/orders/OrdersPage";
 import UserOrdersPage from "./pages/userOrders/UserOrdersPage";
 import MyCarPage from "./pages/my-car/MyCarPage";
 import MaintenancesPage from "./pages/maintenances/MaintenancesPage";
+import BanPage from "./pages/ban/BanPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route index element={<Navigate to="login" replace />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
+        <Route path="banned" element={<BanPage />} />
         <Route
           path="main"
           element={

@@ -123,6 +123,7 @@ function RegisterPage() {
             id="filled-basic"
             label="Пароль"
             variant="filled"
+            type="password"
             style={{ backgroundColor: "white", borderRadius: "4px" }}
             onChange={(val) => {
               setPassword(val.target.value);
@@ -136,6 +137,7 @@ function RegisterPage() {
             id="filled-basic"
             label="Подтвердите пароль"
             variant="filled"
+            type="password"
             style={{ backgroundColor: "white", borderRadius: "4px" }}
             onChange={(val) => {
               setConfirmPassword(val.target.value);

@@ -30,7 +30,7 @@ public class RentalService {
         String lastOrderTime = orders.get(orders.size() - 1).getOrderTime();
 
         Date date = new Date();
-        SimpleDateFormat formatDate = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy");
         SimpleDateFormat formatTime = new SimpleDateFormat("kk:mm");
         String strDate = formatDate.format(date);
         String strTime = formatTime.format(date);

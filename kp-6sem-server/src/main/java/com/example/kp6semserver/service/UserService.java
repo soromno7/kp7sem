@@ -148,4 +148,16 @@ public class UserService {
         return plainText.toString();
     }
 
+    public void unblockUser(Long id) {
+        UserEntity user = userRepo.findById(id).get();
+        user.setStatus("ok");
+        userRepo.save(user);
+    }
+
+    public void blockUser(Long id) {
+        UserEntity user = userRepo.findById(id).get();
+        user.setStatus("ban");
+        userRepo.save(user);
+    }
+
 }

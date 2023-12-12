@@ -12,7 +12,7 @@ function ProfilePage() {
 
   const [name, setName] = useState(JSON.parse(userData).first_name);
   const [secondName, setSecondName] = useState(JSON.parse(userData).last_name);
-  const [date, setDate] = useState(JSON.parse(userData).date_of_birth);
+  const [date, setDate] = useState(dayjs(JSON.parse(userData).date_of_birth));
   const [phone, setPhone] = useState(JSON.parse(userData).phone);
   const [email, setEmail] = useState(JSON.parse(userData).email);
   const [password, setPassword] = useState(JSON.parse(userData).password);
@@ -87,14 +87,14 @@ function ProfilePage() {
               value={secondName}
             />
           </div>
-          <div
+          {/* <div
             style={{
               backgroundColor: "#ebebeb",
               borderRadius: "4px",
               width: "350px",
             }}
-          >
-            <DatePicker
+          > */}
+            {/* <DatePicker
               label="Дата рождения"
               onChange={(val) => {
                 setDate(
@@ -105,9 +105,9 @@ function ProfilePage() {
                 );
               }}
               format="DD.MM.YYYY"
-              value={dayjs(date)}
-            />
-          </div>
+              defaultValuevalue={dayjs('2022-04-17')}
+            /> */}
+          {/* </div> */}
           <TextField
             id="filled-basic"
             label="Номер телефона"

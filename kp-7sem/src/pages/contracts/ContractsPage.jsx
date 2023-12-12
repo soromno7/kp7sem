@@ -83,7 +83,7 @@ function ContractsPage() {
 
   return (
     <div>
-      <Modal
+      {/* <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="title"
@@ -159,9 +159,9 @@ function ContractsPage() {
             </div>
           </Typography>
         </Box>
-      </Modal>
+      </Modal> */}
       <div className="btnContainer">
-        <Button
+        {/* <Button
           variant="contained"
           style={{ backgroundColor: "white", color: "black" }}
           size="small"
@@ -176,7 +176,7 @@ function ContractsPage() {
           onClick={deleteHandler}
         >
           Удалить
-        </Button>
+        </Button> */}
       </div>
       <Table
         cols={cols}

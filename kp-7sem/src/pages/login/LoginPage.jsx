@@ -54,6 +54,7 @@ function LoginPage() {
           id="filled-basic"
           label="Пароль"
           variant="filled"
+          type="password"
           style={{ backgroundColor: "white", borderRadius: "4px" }}
           onChange={(val) => {
             setPassword(val.target.value);

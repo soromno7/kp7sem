@@ -55,11 +55,13 @@ function UsersPage() {
   };
 
   const blockHandler = async () => {
-    
+    await axios.post(`http://localhost:8080/user/block/${selRow.id}`)
+    .then(() => updateTable())
   }
 
   const unblockHandler = async () => {
-    
+    await axios.post(`http://localhost:8080/user/unblock/${selRow.id}`)
+    .then(() => updateTable())
   }
 
   const cols = [
@@ -230,6 +232,7 @@ function UsersPage() {
           variant="contained"
           style={{ backgroundColor: "white", color: "black" }}
           size="small"
+          onClick={unblockHandler}
         >
           Разблокировать
         </Button>
@@ -237,6 +240,7 @@ function UsersPage() {
           variant="contained"
           style={{ backgroundColor: "white", color: "black" }}
           size="small"
+          onClick={blockHandler}
         >
           Заблокировать
         </Button>
